@@ -1,0 +1,6 @@
+extend type Mutation {
+  """Synthesize text to speech, returns base64 audio"""
+  SpeechSynthesize(input: SpeechSynthesizeInput!): SpeechSynthesisResult!
+  """Transcribe audio to text"""
+  SpeechTranscribe(input: SpeechTranscribeInput!): SpeechTranscriptionResult!
+}

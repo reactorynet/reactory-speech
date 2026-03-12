@@ -1,0 +1,1 @@
+export { LocalSpeechProvider } from './LocalSpeechProvider';

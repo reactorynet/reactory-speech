@@ -1,0 +1,21 @@
+"""
+Input for speech synthesis
+"""
+input SpeechSynthesizeInput {
+  """Text to synthesize"""
+  text: String!
+  """Voice ID (e.g. af_heart)"""
+  voice: String
+  """Playback speed multiplier"""
+  speed: Float
+}
+
+"""
+Input for speech transcription
+"""
+input SpeechTranscribeInput {
+  """Base64-encoded audio data"""
+  audioBase64: String!
+  """Language hint (e.g. en)"""
+  language: String
+}

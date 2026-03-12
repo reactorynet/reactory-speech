@@ -1,0 +1,15 @@
+{
+  "name": "reactory-speech",
+  "version": "1.0.0",
+  "description": "Reactory Speech Module - TTS and STT abstraction layer",
+  "author": {
+    "name": "Werner Weber",
+    "email": "werner.weber@gmail.com"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.0",
+    "ws": "^8.18.0",
+    "multer": "^1.4.5-lts.1"
+  }
+}

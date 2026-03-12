@@ -1,0 +1,59 @@
+"""
+Synthesized speech result
+"""
+type SpeechSynthesisResult {
+  """Base64-encoded audio data"""
+  audioBase64: String!
+  """Duration in seconds"""
+  duration: Float
+  """Audio format (e.g. wav)"""
+  format: String!
+  """Sample rate in Hz"""
+  sampleRate: Int
+}
+
+"""
+A segment of transcribed speech
+"""
+type SpeechTranscriptionSegment {
+  start: Float!
+  end: Float!
+  text: String!
+}
+
+"""
+Result of speech transcription
+"""
+type SpeechTranscriptionResult {
+  text: String!
+  language: String
+  segments: [SpeechTranscriptionSegment!]
+  duration: Float
+}
+
+"""
+A TTS voice
+"""
+type SpeechVoice {
+  id: String!
+  name: String!
+  language: String!
+}
+
+"""
+Speech service capabilities
+"""
+type SpeechCapabilities {
+  tts: Boolean!
+  stt: Boolean!
+  streaming: Boolean!
+  voices: [SpeechVoice!]!
+}
+
+"""
+WebSocket stream endpoints
+"""
+type SpeechStreamEndpoints {
+  ttsStreamUrl: String!
+  sttStreamUrl: String!
+}

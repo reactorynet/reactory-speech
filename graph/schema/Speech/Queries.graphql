@@ -1,0 +1,8 @@
+extend type Query {
+  """List available TTS voices"""
+  SpeechVoices: [SpeechVoice!]!
+  """Get speech service capabilities"""
+  SpeechCapabilities: SpeechCapabilities!
+  """Get WebSocket streaming endpoints"""
+  SpeechStreamEndpoints: SpeechStreamEndpoints!
+}
