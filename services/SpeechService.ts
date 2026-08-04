@@ -47,23 +47,37 @@ export class SpeechService {
     }
   }
 
-  private ensureProvider(): ReactorySpeech.ISpeechProvider {
-    if (!this.provider || !this.provider.isReady) {
+  private async ensureProvider(): Promise<ReactorySpeech.ISpeechProvider> {
+    if (!this.provider) {
+      const { LocalSpeechProvider } = await import('./providers/LocalSpeechProvider');
+      this.provider = new LocalSpeechProvider(this.context, this.logger);
+    }
+    if (!this.provider.isReady) {
+      try {
+        await this.provider.initialize();
+      } catch {
+        // Ignore initialization error
+      }
+    }
+    if (!this.provider.isReady) {
       throw new Error('Speech provider is not available. Ensure the speech microservice is running.');
     }
     return this.provider;
   }
 
   async synthesize(text: string, options?: ReactorySpeech.TTSOptions): Promise<ReactorySpeech.SpeechSynthesisResult> {
-    return this.ensureProvider().synthesize(text, options);
+    const provider = await this.ensureProvider();
+    return provider.synthesize(text, options);
   }
 
   async transcribe(audioBuffer: Buffer, options?: ReactorySpeech.STTOptions): Promise<ReactorySpeech.TranscriptionResult> {
-    return this.ensureProvider().transcribe(audioBuffer, options);
+    const provider = await this.ensureProvider();
+    return provider.transcribe(audioBuffer, options);
   }
 
   async getVoices(): Promise<ReactorySpeech.Voice[]> {
-    return this.ensureProvider().getVoices();
+    const provider = await this.ensureProvider();
+    return provider.getVoices();
   }
 
   async getCapabilities(): Promise<ReactorySpeech.SpeechCapabilities> {
