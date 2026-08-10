@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Reactory from '@reactory/reactory-core';
+import Reactory from '@reactorynet/reactory-core';
 import type ReactorySpeech from '../../types';
 
 const SPEECH_SERVICE_URL = process.env.REACTORY_SPEECH_SERVICE_URL || 'http://localhost:8765';

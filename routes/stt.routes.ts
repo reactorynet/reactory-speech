@@ -1,5 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import Reactory from '@reactory/reactory-core';
+import Reactory from '@reactorynet/reactory-core';
 import { audioUpload } from '../middleware/audioUpload';
 
 /**

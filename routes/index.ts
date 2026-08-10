@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import Reactory from '@reactory/reactory-core';
+import Reactory from '@reactorynet/reactory-core';
 import createTtsRoutes from './tts.routes';
 import createSttRoutes from './stt.routes';
 

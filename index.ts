@@ -1,4 +1,4 @@
-import Reactory from '@reactory/reactory-core';
+import Reactory from '@reactorynet/reactory-core';
 import routes from './routes';
 import services from './services';
 import SpeechTypeDefinitions from './graph/schema';
