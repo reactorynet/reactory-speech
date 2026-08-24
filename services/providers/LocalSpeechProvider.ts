@@ -39,16 +39,24 @@ export class LocalSpeechProvider implements ReactorySpeech.ISpeechProvider {
   }
 
   async synthesize(text: string, options?: ReactorySpeech.TTSOptions): Promise<ReactorySpeech.SpeechSynthesisResult> {
+    const validVoices = new Set([
+      'af_heart', 'af_bella', 'af_nicole', 'af_sarah', 'af_sky',
+      'am_adam', 'am_michael', 'bf_emma', 'bf_isabella', 'bm_george', 'bm_lewis'
+    ]);
+
+    const requestedVoice = options?.voice || 'af_heart';
+    const voice = validVoices.has(requestedVoice) ? requestedVoice : 'af_heart';
+
     const response = await axios.post(
       `${SPEECH_SERVICE_URL}/api/tts/synthesize`,
       {
         text,
-        voice: options?.voice || 'af_heart',
+        voice,
         speed: options?.speed || 1.0,
       },
       {
         responseType: 'arraybuffer',
-        timeout: 30000,
+        timeout: 120000,
       },
     );
 
